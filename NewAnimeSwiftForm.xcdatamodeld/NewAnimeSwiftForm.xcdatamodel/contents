@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Anime" representedClassName="Anime" syncable="YES" codeGenerationType="class">
+        <attribute name="airingStatus_MAL" optional="YES" attributeType="String"/>
+        <attribute name="broadcastDay" optional="YES" attributeType="String"/>
+        <attribute name="derivedSource" attributeType="String"/>
+        <attribute name="description_MAL" optional="YES" attributeType="String"/>
+        <attribute name="ended" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="ended_MAL" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="episodes" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id_MAL" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastEpisodeWatched" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastWatched" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="mediaType" attributeType="String"/>
+        <attribute name="personalRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="poster_MAL" optional="YES" attributeType="URI"/>
+        <attribute name="rank_MAL" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="score_MAL" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="season" attributeType="String"/>
+        <attribute name="started" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="started_MAL" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="studios_MAL" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="usersWhoDropped_MAL" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="watchStatus" optional="YES" attributeType="String"/>
+        <attribute name="year" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Episode" representedClassName="Episode" syncable="YES" codeGenerationType="class">
+        <attribute name="animeId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="number" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="watchStatus" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Schedule" representedClassName="Schedule" syncable="YES" codeGenerationType="class">
+        <attribute name="count" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fri" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isCurrent" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="mon" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sat" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sun" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="thu" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="tue" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="wed" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+</model>
