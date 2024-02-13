@@ -12,7 +12,7 @@ struct AnimeController {
         case badURL, badResponse, badData
     }
     
-    private let baseURL = URL(string: "http://localhost:5074/MAL/Anime/")
+    private let baseURL = URL(string: "https://api.decahex.net/MAL/Anime/")
     
     func getAnimeById(MalId: Int) async throws -> MALAnime{
         
@@ -32,7 +32,7 @@ struct AnimeController {
     }
     
     func searchAnime(query: String) async throws -> MALAnimeSearch{
-        var request = URLRequest(url: URL(string: "http://localhost:5074/MAL/AnimeSearch")!)
+        var request = URLRequest(url: URL(string: "https://api.decahex.net/MAL/AnimeSearch")!)
         request.httpMethod = "POST"
         request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
         
