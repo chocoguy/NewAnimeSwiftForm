@@ -188,7 +188,8 @@ struct AddAnimeAuto: View {
             newAnime.broadcastDay = ani.broadcastDay
             newAnime.poster_MAL = URL(string: ani.posterMAL)
             newAnime.started_MAL = DateFromString(dateString: ani.startedMAL)
-            newAnime.ended_MAL = DateFromString(dateString: ani.endedMAL)
+            //we get NULL sometimes. override with my birthday if this is the case. Will need to fix the api and how this thing handles nulls
+            newAnime.ended_MAL = DateFromString(dateString: ani.endedMAL ?? "2002-06-16")
             newAnime.description_MAL = ani.descriptionMAL
             newAnime.rank_MAL = Int32(ani.rankMAL)
             newAnime.airingStatus_MAL = ani.airingStatusMAL
@@ -214,6 +215,7 @@ struct AddAnimeAuto: View {
             showSavedToast.toggle()
         } catch{
             print("Error getting anime on AddAnimeAuto.swift \(error.localizedDescription)")
+            print(error)
         }
     }
     

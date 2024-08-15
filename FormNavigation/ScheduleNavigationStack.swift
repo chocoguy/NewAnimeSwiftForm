@@ -10,7 +10,7 @@ import SwiftUI
 struct ScheduleNavigationStack: View {
     var body: some View {
         NavigationStack{
-            Text("Schedule under construction")
+            ScheduleDetails()
         }.navigationTitle("Schedule")
     }
 }

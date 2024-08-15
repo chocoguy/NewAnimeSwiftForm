@@ -124,18 +124,19 @@ struct EditAnime: View {
             VStack{
                     List(episodesFromSelectionTwo){ ep in
                         Text("\(ep.number)")
-                        Button(){
-                            print("\(ep.id)")
-                        }label: {
-                            Text("joe").foregroundStyle(.green)
-                        }
-                            .swipeActions(edge: .trailing) {
-                                Button("Hamster"){
-                                    print("Small and Soft")
-                                }
-                                .tint(.blue)
+                        if(ep.watchStatus == 1){
+                            Button(){
+                                UnwatchEpisode(ep: ep)
+                            }label: {
+                                Text("Unwatch").foregroundStyle(.red)
                             }
-                            .selectionDisabled()
+                        }else{
+                            Button(){
+                                WatchEpisode(ep: ep)
+                            }label: {
+                                Text("Watch").foregroundStyle(.blue)
+                            }
+                        }
                     }
 //                    Table(allEpisodesFromSelection) {
 //                        TableColumn("Episode Num"){ episode in
@@ -162,23 +163,6 @@ struct EditAnime: View {
                         .padding(.trailing, 10)
                     
                 }
-            }
-            List {
-                Text("Pepperoni pizza")
-                    .swipeActions {
-                        Button("Order") {
-                            print("Awesome!")
-                        }
-                        .tint(.green)
-                    }
-
-                Text("Pepperoni with pineapple")
-                    .swipeActions {
-                        Button("Burn") {
-                            print("Right on!")
-                        }
-                        .tint(.red)
-                    }
             }
         }.onAppear {
             _title = anime.title!
@@ -326,6 +310,60 @@ struct EditAnime: View {
 //                }
 //            }
 //        }
+    }
+    
+    //05
+    func WatchEpisode(ep: Episode){
+        do{
+            print("Going to watch episode, \(ep)")
+              
+//            for episode in episodesFromSelectionTwo {
+//                if(episode.watchStatus == 0){
+//                    
+//                }
+//                print("Hello episode, \(episode.number)")
+//            }
+            
+            if(ep.number == 1){
+                anime.started = Date()
+            }
+            
+            if(ep.number == anime.episodes){
+                anime.watchStatus = "Finished"
+                anime.ended = Date()
+            }
+            
+            ep.watchStatus = 1
+            anime.watchStatus = "Watching"
+            anime.lastEpisodeWatched = ep.number
+            anime.lastWatched = Date()
+            
+            try viewContext.save()
+            
+        } catch {
+            errorToastMessage = "Runtime Error - 0505"
+            showErrorToast.toggle()
+            let nsError = error as NSError
+            fatalError("Unresolved in EditAnime.swift \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    //06
+    func UnwatchEpisode(ep: Episode){
+        do{
+            ep.watchStatus = 0
+            if(ep.number != 1){
+                anime.lastEpisodeWatched = ep.number - 1
+            }else{
+                anime.lastEpisodeWatched = 1
+            }
+            try viewContext.save()
+        } catch{
+            errorToastMessage = "Runtime Error - 0506"
+            showErrorToast.toggle()
+            let nsError = error as NSError
+            fatalError("Unresolved in EditAnime.swift \(nsError), \(nsError.userInfo)")
+        }
     }
     
 }

@@ -19,7 +19,7 @@ struct MALAnime: Codable {
     var broadcastDay: String
     var posterMAL: String
     var startedMAL: String
-    var endedMAL: String
+    var endedMAL: String?
     var descriptionMAL: String
     var rankMAL: Int
     var airingStatusMAL: String
